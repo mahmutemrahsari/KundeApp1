@@ -29,6 +29,8 @@ namespace KundeApp1
 
             app.UseRouting();
 
+            app.UseStaticFiles(); //merk denne! HTML JS files
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
