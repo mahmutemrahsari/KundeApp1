@@ -10,25 +10,18 @@ namespace KundeApp1.Controllers
     [Route("[controller]/[action]")]
     public class KundeController : ControllerBase
     {
+        private readonly KundeDB _kundeDB;
+
+        public KundeController(KundeDB kundeDb)
+        {
+            _kundeDB = kundeDb;
+        }
+
         public List<Kunde> HentAlle()
         {
-            var kundene = new List<Kunde>();
+            List<Kunde> alleKundene = _kundeDB.Kunder.ToList();
+            return alleKundene;
 
-            var kunde1 = new Kunde();
-            kunde1.navn = "Per Hansen";
-            kunde1.adresse = "Osloveien 82";
-
-            var kunde2 = new Kunde
-            {
-                navn = "Line Jensen",
-                adresse = "Askerveien 82"
-            };
-
-
-            kundene.Add(kunde1);
-            kundene.Add(kunde2);
-
-            return kundene;
         }
 
     }
